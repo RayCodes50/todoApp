@@ -1,28 +1,4 @@
-const todo = [
-  {
-    title: "Pet cat",
-    description: "Go and pet lady",
-    priority: "Extreme",
-    completed: false,
-    dueDate: "date",
-    notes: "One note two notes",
-    checklist: "Placeholder",
-    tags: ["cat", "four legs"],
-    id: crypto.randomUUID(),
-  },
-  {
-    title: "Pet cat",
-    description: "Go and pet lady",
-    priority: "Extreme",
-    completed: false,
-    dueDate: "date",
-    notes: "One note two notes",
-    checklist: "Placeholder",
-    tags: ["cat", "four legs"],
-
-    id: crypto.randomUUID(),
-  },
-];
+const todo = [];
 const todoControl = (() => {
   const todoList = todo;
   //returns todo ?? at certain point later ID ??

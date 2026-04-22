@@ -1,20 +1,24 @@
 import "./styles.css";
 import { todoControl } from "./todoObj.js";
 window.todo = todoControl;
-console.log("Webpack starter running");
-todoControl.readTodo(0);
-todoControl.changeTodo(0, { title: "Pet Lady" });
-todoControl.readTodo(0);
-todoControl.changeTodo(0, { priority: "Low" });
-todoControl.readTodo(0);
-todoControl.changeTodo(0, { completed: "true" });
-todoControl.readTodo(0);
-todoControl.readTodo(1);
+
 todoControl.addTodo(
-  todoControl.createTodo("Pet dog", "High", "Today", {
+  todoControl.createTodo("Pet lady", "Extreme", "Today", {
     completed: false,
-    tags: ["dog", "5 legs"],
+    description: "Go and pet lady",
+    notes: "One note two notes",
+    checklist: "Placeholder",
+    tags: ["cat", "four legs"],
   }),
 );
-todoControl.readTodo(2);
-todoControl.deleteTodo("fab458fd-6d83-4f5c-81eb-ac2298a2c290");
+todoControl.addTodo(
+  todoControl.createTodo("Doggy", "Low", "Infinity", {
+    completed: false,
+    description: "Woof woof",
+    notes: "One note two notes",
+    checklist: "Placeholder2",
+    tags: ["dog", "five legs"],
+  }),
+);
+console.log(todoControl.readTodo(1));
+console.log(todoControl.readTodo(0));
