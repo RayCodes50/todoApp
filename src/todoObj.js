@@ -1,9 +1,21 @@
-const todo = [];
 const todoControl = (() => {
-  const todoList = todo;
+  let todoList = [];
   //returns todo ?? at certain point later ID ??
+  function storeTodo() {
+    localStorage.setItem("todo", JSON.stringify(todoList));
+    console.log("stored:", JSON.parse(localStorage.getItem("todo")));
+  }
+  function loadTodo() {
+    const storage = JSON.parse(localStorage.getItem("todo"));
+    todoList = storage || [];
+  }
+  // get single item lookup
   function readTodo(para) {
     console.log(todoList[para]);
+    return todoList[para];
+  }
+  function getTodos() {
+    return [...todoList];
   }
   //changes the list
   function changeTodo(para, options = {}) {
@@ -18,6 +30,7 @@ const todoControl = (() => {
     if (options.notes !== undefined) todoChange.notes = options.notes;
     if (options.checklist !== undefined)
       todoChange.checklist = options.checklist;
+    storeTodo();
   }
 
   // creates todo from input
@@ -44,20 +57,35 @@ const todoControl = (() => {
   }
   //pushes todo to the array
   function addTodo(obj) {
-    todo.push(obj);
+    todoList.push(obj);
+    storeTodo();
   }
   // delete function needs updating later
-  function deleteTodo(num) {
+  function deleteTodo(id) {
     console.log("Function start");
-    const idToDelete = todoList[1].id;
     for (let i = 0; i < todoList.length; i++) {
-      if (todoList[i].id == idToDelete) {
+      if (todoList[i].id === id) {
         console.log(i);
-        console.log(todoList[i]);
+        todoList.splice(i, 1);
+        // localStorage.setItem("todo", JSON.stringify(todoList));
+        storeTodo();
+        console.log(todoList);
+        return true;
       }
     }
+    console.log(`Todo with id ${id} not found`);
+    return false;
   }
 
-  return { readTodo, changeTodo, createTodo, addTodo, deleteTodo };
+  return {
+    readTodo,
+    changeTodo,
+    createTodo,
+    addTodo,
+    deleteTodo,
+    storeTodo,
+    loadTodo,
+    getTodos,
+  };
 })();
 export { todoControl };
