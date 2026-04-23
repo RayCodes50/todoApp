@@ -1,3 +1,122 @@
+@import "modern-normalize.css";
+/* Remove default margins & paddings */
+*:not(dialog) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic typography improvements */
 body {
-background-color: rebeccapurple;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Optional: experimental size interpolation */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+/* Navigation resets */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav ul li a,
+li {
+  text-decoration: none;
+  color: inherit;
+  list-style-type: none;
+}
+
+/* Headings & paragraphs */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-size: inherit;
+  font-weight: inherit;
+}
+p {
+  overflow-wrap: break-word;
+}
+
+/* Table basics */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+th,
+td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+/* Media elements */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Optional stacking context for app roots */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  background-color: rgb(250, 249, 251);
+  font-size: 1.2rem;
+  font-family: "Prompt", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.app {
+  display: flex;
+  height: 100vh;
+}
+.sidebar {
+  flex: 0 0 340px;
+  padding: 1.5rem;
+}
+.logo {
+  width: 145px;
+  height: auto;
+  margin-left: 1rem;
+}
+.menu {
+  border-bottom: 2px solid rgb(241, 242, 245);
+}
+.menu_wrap {
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+.rd {
+  margin-left: auto;
+  background-color: rgb(241, 242, 245);
+  display: inline-flex;
+  padding: 0 6px;
+
+  border-radius: 999px;
+}
+.icon {
+  height: 1.75rem;
+  margin-right: 1rem;
+}
+.content {
+  flex: 1;
+  min-width: 0;
 }
