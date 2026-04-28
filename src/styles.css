@@ -75,9 +75,16 @@ svg {
 #__next {
   isolation: isolate;
 }
+:root {
+  --gray-text: rgb(128, 133, 153);
+  --gray-highlight: rgb(241, 241, 250);
+  --white-nav: rgb(250, 249, 251);
+  --gray-background: rgb(241, 242, 245);
+  --blue-button: rgb(78, 88, 220);
+}
 
 body {
-  background-color: rgb(250, 249, 251);
+  background-color: var(--white-nav);
   font-size: 1.2rem;
   font-family: "Prompt", sans-serif;
   font-weight: 400;
@@ -85,7 +92,8 @@ body {
 }
 .app {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  position: relative;
 }
 .sidebar {
   flex: 0 0 340px;
@@ -93,6 +101,9 @@ body {
   min-width: 0;
   box-shadow: 8px 0 12px rgba(0, 0, 0, 0.08);
   z-index: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 .logo {
   width: 145px;
@@ -104,7 +115,7 @@ body {
 .projects,
 .settings {
   margin-top: 0.5rem;
-  border-bottom: 2px solid rgb(241, 242, 245);
+  border-bottom: 2px solid var(--gray-highlight);
   margin-bottom: 2rem;
 }
 .settings {
@@ -120,7 +131,7 @@ body {
 .rd,
 .pro_rd {
   margin-left: auto;
-  background-color: rgb(241, 242, 245);
+  background-color: var(--gray-highlight);
   display: inline-flex;
   padding: 0 8px;
   border-radius: 999px;
@@ -205,7 +216,7 @@ body {
   text-overflow: ellipsis;
 }
 .content {
-  background-color: rgb(241, 242, 245);
+  background-color: var(--gray-background);
   padding: 1rem;
 }
 .extra_menu {
@@ -223,7 +234,7 @@ body {
   margin-left: auto;
 }
 .section_wrap {
-  padding: 3rem 2rem;
+  padding: 1rem 2rem 0 2rem;
 }
 .h1_wrap {
   margin-bottom: 2rem;
@@ -234,22 +245,148 @@ h1 {
   margin-bottom: 0.5rem;
 }
 .h1_nr_tasks {
-  color: gray;
+  color: var(--gray-text);
 }
 .todo_form {
   padding: 1rem;
-  background-xxcolor: white;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  gap: 2rem;
+}
+.todo_form input {
+  border: none;
+  flex: 1;
+}
+.todo_form input:focus {
+  border: 1px solid red;
+}
+.todo_form button {
+  margin-left: auto;
+  color: white;
+  padding: 0.875rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--blue-button);
 }
 .todo_filter,
 .todo_f_wrap {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+}
+.todo_filter {
+  margin-top: 2rem;
+  color: gray;
+}
+.todo_f_wrap {
+  background-color: white;
+  padding: 0.25rem 0.25rem;
+  border-radius: 20px;
 }
 .todo_f_section {
   border: none;
+  background-color: transparent;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  color: var(--gray-text);
+}
+.todo_f_sort {
+  margin-left: auto;
+  background-color: white;
+  border-radius: 20px;
+  padding: 0.47rem;
+}
+.active {
+  background-color: var(--gray-highlight);
+  color: var(--blue-button);
+}
+.active .icon {
+  fill: var(--blue-button);
 }
 #sort {
   border: none;
   background-color: transparent;
+}
+
+.todo_wrap {
+  margin-top: 1rem;
+}
+.todo_head {
+  color: var(--blue-button);
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+.todo_list {
+  background-color: white;
+  overflow: hidden;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.todo_item_head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.todo_item_head .icon {
+  margin-right: 0;
+  fill: var(--gray-text);
+}
+.checkbox {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+.checkbox:checked {
+  background-color: green;
+}
+.todo_title {
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+.todo_tags[data-color="blue"] {
+  color: var(--blue-button);
+}
+.todo_dueDate {
+  margin-left: auto;
+  color: var(--blue-button);
+}
+.star {
+  margin-bottom: 5px;
+  fill: var(--gray-text);
+}
+.todo_item_body {
+  padding: 2rem 2rem 0.5rem 5.375rem;
+}
+.todo_item_body_wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.todo_priority {
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
+  margin-right: 0.625rem;
+}
+.todo_notes {
+  background-color: var(--gray-background);
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 15px;
+  height: 100px;
+}
+/* .todo_notes:focus {
+  outline: 2px solid red;
+} */
+.todo_item {
+  border-bottom: 2px solid var(--gray-highlight);
+  padding: 1rem 0;
+}
+.todo_item:last-child {
+  border-bottom: none;
 }

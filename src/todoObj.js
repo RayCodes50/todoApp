@@ -42,6 +42,7 @@ const todoControl = (() => {
       notes = "",
       checklist = "Placeholder",
       tags = [],
+      highlighted,
     } = options;
     return {
       title,
@@ -53,6 +54,7 @@ const todoControl = (() => {
       notes,
       checklist,
       tags,
+      highlighted,
     };
   }
   //pushes todo to the array

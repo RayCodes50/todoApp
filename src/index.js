@@ -1,5 +1,13 @@
 import "./styles.css";
 import { todoControl } from "./todoObj.js";
+import { createMainHeaderTemplate } from "./mainTemplate.js";
+import { createBodyTemplate } from "./bodyTemplate.js";
+const topSection = document.getElementById("head_section");
+const bodySection = document.getElementById("body_section");
+topSection.innerHTML = createMainHeaderTemplate();
+bodySection.innerHTML = createBodyTemplate();
+const todoList = bodySection.querySelector("#todoList");
+
 window.todo = todoControl;
 // localStorage.clear();
 todoControl.loadTodo();
