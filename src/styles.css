@@ -91,6 +91,8 @@ body {
   flex: 0 0 340px;
   padding: 1.5rem;
   min-width: 0;
+  box-shadow: 8px 0 12px rgba(0, 0, 0, 0.08);
+  z-index: 1;
 }
 .logo {
   width: 145px;
@@ -133,8 +135,15 @@ body {
   align-items: center;
   margin: 0 0.5rem 0.5rem 0.5rem;
 }
-.project svg {
+
+.project button {
   margin-left: auto;
+  margin-right: 0;
+  border: none;
+  background-color: transparent;
+}
+.project button svg,
+.icon_menu {
   margin-right: 0;
 }
 .clr {
@@ -194,4 +203,53 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.content {
+  background-color: rgb(241, 242, 245);
+  padding: 1rem;
+}
+.extra_menu {
+  border: none;
+  background-color: transparent;
+}
+.extra_flex {
+  display: flex;
+  gap: 1rem;
+}
+.extra_flex > * {
+  flex: 0 0 auto;
+}
+.push_right {
+  margin-left: auto;
+}
+.section_wrap {
+  padding: 3rem 2rem;
+}
+.h1_wrap {
+  margin-bottom: 2rem;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.h1_nr_tasks {
+  color: gray;
+}
+.todo_form {
+  padding: 1rem;
+  background-xxcolor: white;
+}
+.todo_filter,
+.todo_f_wrap {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.todo_f_section {
+  border: none;
+}
+#sort {
+  border: none;
+  background-color: transparent;
 }
