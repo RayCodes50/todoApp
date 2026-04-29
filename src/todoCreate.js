@@ -1,4 +1,5 @@
 function createTodo(item) {
+  console.log(item);
   const card = document.createElement("li");
   card.classList.add("todo_item");
   card.innerHTML = `
@@ -20,11 +21,11 @@ function createTodo(item) {
       />
       <div class="todo_info">
         <p class="todo_title" id="title" contenteditable="true">
-          ${item}
+          ${item.title}
         </p>
-        <p class="todo_tags" id="tags" data-color="blue">Work</p>
+        <p class="todo_tags" id="tags" data-color="blue">${item.tags}</p>
       </div>
-      <div class="todo_dueDate" id="dueDate">10:00AM</div>
+      <div class="todo_dueDate" id="dueDate">${item.dueDate}</div>
 
       <svg
         class="icon star"
@@ -44,7 +45,7 @@ function createTodo(item) {
           id="description"
           contenteditable="true"
         >
-          Clients expects it by Monday!
+          ${item.description}
         </p>
         <select class="todo_priority" id="priority">
           <option value="5">Highest</option>
@@ -55,9 +56,11 @@ function createTodo(item) {
         </select>
       </div>
       <p class="todo_notes" id="notes" contenteditable="true">
-        Hey! I'm an editable content
+        ${item.notes}
       </p>
-    </section>`;
+      <button data-id="${item.id}" id="btnDelete" class='btn_delete'>Delete</button>
+    </section>
+    `;
   return card;
 }
 

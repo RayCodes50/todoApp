@@ -54,10 +54,48 @@ function createMainHeaderTemplate() {
               You have <span class="h1_nr_span">3 tasks</span> today.
             </p>
           </header>
-          <form class="todo_form" action="submit">
-            <input type="text" name="" id="" placeholder="What needs doing?" />
-            <button type="submit">Add Task</button>
-          </form>
+            <button type="submit" class='add_task'>Add Task</button>
+
+            <!-- new modal form -->
+          <dialog id="todoDialog">
+      <form method="dialog" class="todo_dialog_form">
+        <h2>Descrive your task</h2>
+        <main>
+          <div class="field_wrap">
+            <label for="title">Name the task:</label>
+            <input type="text" name="title" id="title" required/>
+          </div>
+          <div class="field_wrap">
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" />
+          </div>
+          <div class="field_wrap">
+            <label for="tags">Tags:</label>
+            <input type="text" name="tags" id="tags" />
+          </div>
+          <div class="field_wrap">
+            <label for="priority">Priority:</label>
+            <select class="todo_priority" id="priority" name="priority">
+              <option value="5">Highest</option>
+              <option value="4">High</option>
+              <option value="3">Moderate</option>
+              <option value="2">Low</option>
+              <option value="1">Very Low</option>
+            </select>
+          </div>
+          <div class="field_wrap">
+            <label for="dueDate">When due:</label>
+            <input type="date" name="dueDate" id="dueDate" required/>
+          </div>
+          <div class="field_wrap">
+            <label for="notes">Notes:</label>
+            <input type="text" name="notes" id="notes" />
+          </div>
+        </main>
+        <button value="save" id='save'>Save</button>
+        <button value="cancel">Close</button>
+      </form>
+    </dialog>
           <nav class="todo_filter">
             <ul class="todo_f_wrap">
               <li><button class="todo_f_section active">All</button></li>

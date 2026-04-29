@@ -8,18 +8,55 @@ const bodySection = document.getElementById("body_section");
 topSection.innerHTML = createMainHeaderTemplate();
 bodySection.innerHTML = createBodyTemplate();
 const todoList = bodySection.querySelector("#todoList");
-const todoTest = createTodo(todoControl.readTodo(1));
-// const todoTest2 = createTodo(todoControl.readTodo(0));
 todoControl.loadTodo();
 
 console.log(todoControl.getTodos());
-console.log(todoControl.readTodo(1));
-console.log(todoControl.readTodo());
-console.log(todoTest);
-// console.log(todoTest2);
-todoList.appendChild(todoTest);
+console.log(todoControl.readTodo(1).title);
+console.log(todoControl.readTodo(0));
+todoList.appendChild(createTodo(todoControl.readTodo(1)));
+todoList.appendChild(createTodo(todoControl.readTodo(0)));
 
-window.todo = todoControl;
+// event handlers
+// all active completed filter section todo_f_wrap
+const btnsFilter = document.querySelector(".todo_f_wrap");
+btnsFilter.addEventListener("click", (e) => {
+  if (e.target.classList.contains("active")) return;
+  if (e.target.classList.contains("todo_f_section")) {
+    const filters = document.querySelectorAll(".todo_f_section");
+    filters.forEach((btn) => btn.classList.remove("active"));
+  }
+  e.target.classList.add("active");
+});
+
+// prevents page from submiting and opens dialog
+const todoForm = document.querySelector(".todo_form");
+const todoDialog = document.querySelector("#todoDialog");
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  todoDialog.showModal();
+});
+const form = document.querySelector(".todo_dialog_form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const clickedButton = e.submitter.value;
+  if (clickedButton === "save" || clickedButton === "cancel") {
+    const title = form.title.value;
+    const description = form.description.value;
+    const tags = form.tags.value;
+    const priority = form.priority.value;
+    const dueDate = form.dueDate.value;
+    const notes = form.notes.value;
+    console.log({ title, description, tags, priority, dueDate, notes });
+  }
+  document.querySelector("#todoDialog").close(clickedButton);
+});
+// btnsFilter.forEach((btn) => {
+//   btn.addEventListener("click", (e) => {
+//     if (e.target.classList.contains("active")) return;
+//   });
+// });
+
 // localStorage.clear();
 
 // todoControl.addTodo(
@@ -40,5 +77,3 @@ window.todo = todoControl;
 //     tags: ["dog", "five legs"],
 //   }),
 // );
-
-console.log(todoControl.getTodos());
