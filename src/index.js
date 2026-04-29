@@ -2,15 +2,25 @@ import "./styles.css";
 import { todoControl } from "./todoObj.js";
 import { createMainHeaderTemplate } from "./mainTemplate.js";
 import { createBodyTemplate } from "./bodyTemplate.js";
+import { createTodo } from "./todoCreate.js";
 const topSection = document.getElementById("head_section");
 const bodySection = document.getElementById("body_section");
 topSection.innerHTML = createMainHeaderTemplate();
 bodySection.innerHTML = createBodyTemplate();
 const todoList = bodySection.querySelector("#todoList");
+const todoTest = createTodo(todoControl.readTodo(1));
+// const todoTest2 = createTodo(todoControl.readTodo(0));
+todoControl.loadTodo();
+
+console.log(todoControl.getTodos());
+console.log(todoControl.readTodo(1));
+console.log(todoControl.readTodo());
+console.log(todoTest);
+// console.log(todoTest2);
+todoList.appendChild(todoTest);
 
 window.todo = todoControl;
 // localStorage.clear();
-todoControl.loadTodo();
 
 // todoControl.addTodo(
 //   todoControl.createTodo("Pet lady", "Extreme", "Today", {
@@ -31,8 +41,4 @@ todoControl.loadTodo();
 //   }),
 // );
 
-todoControl.readTodo(1);
-todoControl.storeTodo();
-todoControl.readTodo(0);
-// todoControl.deleteTodo("e7215fb6-7938-4938-a35d-42f758001be8");
 console.log(todoControl.getTodos());

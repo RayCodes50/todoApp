@@ -11,7 +11,6 @@ const todoControl = (() => {
   }
   // get single item lookup
   function readTodo(para) {
-    console.log(todoList[para]);
     return todoList[para];
   }
   function getTodos() {
