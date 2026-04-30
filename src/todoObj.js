@@ -43,6 +43,17 @@ const todoControl = (() => {
       tags = [],
       highlighted,
     } = options;
+    // checks what obj got
+    // console.log({
+    //   notes,
+    //   title,
+    //   priority,
+    //   dueDate,
+    //   completed,
+    //   description,
+    //   id,
+    //   tags,
+    // });
     return {
       title,
       priority,

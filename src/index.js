@@ -8,10 +8,17 @@ const bodySection = document.getElementById("body_section");
 topSection.innerHTML = createMainHeaderTemplate();
 bodySection.innerHTML = createBodyTemplate();
 const todoList = bodySection.querySelector("#todoList");
+const initial = todoControl.createTodo("Pet Lady", 5, "14/09/1991", {
+  description: "Pet lady the white cat for 5 min",
+  completed: false,
+  notes: "My little Lady 7 years old cat",
+  tags: "4 legs",
+});
+todoControl.addTodo(initial);
+
 todoControl.loadTodo();
 renderTodos();
 window.todoControl = todoControl;
-// localStorage.clear();
 
 // event handlers
 // all active completed filter section todo_f_wrap
@@ -25,7 +32,7 @@ btnsFilter.addEventListener("click", (e) => {
   e.target.classList.add("active");
 });
 
-// prevents page from submiting and opens dialog
+// prevents page from submitting and opens dialog
 const todoForm = document.querySelector(".add_task_btn");
 const todoDialog = document.querySelector("#todoDialog");
 todoForm.addEventListener("click", (e) => {
@@ -45,8 +52,11 @@ form.addEventListener("submit", (e) => {
     dueDate: data.get("dueDate"),
     notes: data.get("notes"),
   };
+
+  const { title, priority, dueDate, ...options } = todo;
   document.querySelector("#todoDialog").close(clickedButton);
-  todoControl.addTodo(todo);
+  const createdTodo = todoControl.createTodo(title, priority, dueDate, options);
+  todoControl.addTodo(createdTodo);
   renderTodos();
 });
 todoDialog.addEventListener("close", () => {
@@ -55,12 +65,21 @@ todoDialog.addEventListener("close", () => {
 
 function renderTodos() {
   const todos = todoControl.getTodos();
-  console.log(todos);
   todoList.innerHTML = "";
   todos.forEach((todo) => {
-    todoList.appendChild(createTodo(todo));
+    todoList.appendChild(createTodo(todo, handleDelete));
   });
 }
+
+function handleDelete(id) {
+  console.log(`Delete handle initiated`);
+  todoControl.deleteTodo(id);
+  renderTodos();
+}
+
+function deleteTodo() {}
+
+//delete btn functionality
 
 // btnsFilter.forEach((btn) => {
 //   btn.addEventListener("click", (e) => {

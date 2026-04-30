@@ -272,7 +272,9 @@ h1 {
   border: none;
   border-radius: 10px;
   background-color: var(--blue-button);
+  cursor: pointer;
 }
+
 .todo_filter,
 .todo_f_wrap {
   display: flex;
