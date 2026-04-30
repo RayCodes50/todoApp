@@ -9,12 +9,9 @@ topSection.innerHTML = createMainHeaderTemplate();
 bodySection.innerHTML = createBodyTemplate();
 const todoList = bodySection.querySelector("#todoList");
 todoControl.loadTodo();
-
-console.log(todoControl.getTodos());
-console.log(todoControl.readTodo(1).title);
-console.log(todoControl.readTodo(0));
-todoList.appendChild(createTodo(todoControl.readTodo(1)));
-todoList.appendChild(createTodo(todoControl.readTodo(0)));
+renderTodos();
+window.todoControl = todoControl;
+// localStorage.clear();
 
 // event handlers
 // all active completed filter section todo_f_wrap
@@ -29,28 +26,42 @@ btnsFilter.addEventListener("click", (e) => {
 });
 
 // prevents page from submiting and opens dialog
-const todoForm = document.querySelector(".todo_form");
+const todoForm = document.querySelector(".add_task_btn");
 const todoDialog = document.querySelector("#todoDialog");
-todoForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+todoForm.addEventListener("click", (e) => {
   todoDialog.showModal();
 });
+// creates todo and saves to memory
 const form = document.querySelector(".todo_dialog_form");
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
   const clickedButton = e.submitter.value;
-  if (clickedButton === "save" || clickedButton === "cancel") {
-    const title = form.title.value;
-    const description = form.description.value;
-    const tags = form.tags.value;
-    const priority = form.priority.value;
-    const dueDate = form.dueDate.value;
-    const notes = form.notes.value;
-    console.log({ title, description, tags, priority, dueDate, notes });
-  }
+  if (clickedButton !== "save") return;
+  const data = new FormData(form);
+  const todo = {
+    title: data.get("title"),
+    description: data.get("description"),
+    tags: data.get("tags"),
+    priority: data.get("priority"),
+    dueDate: data.get("dueDate"),
+    notes: data.get("notes"),
+  };
   document.querySelector("#todoDialog").close(clickedButton);
+  todoControl.addTodo(todo);
+  renderTodos();
 });
+todoDialog.addEventListener("close", () => {
+  form.reset();
+});
+
+function renderTodos() {
+  const todos = todoControl.getTodos();
+  console.log(todos);
+  todoList.innerHTML = "";
+  todos.forEach((todo) => {
+    todoList.appendChild(createTodo(todo));
+  });
+}
+
 // btnsFilter.forEach((btn) => {
 //   btn.addEventListener("click", (e) => {
 //     if (e.target.classList.contains("active")) return;

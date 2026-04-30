@@ -265,7 +265,7 @@ h1 {
 .todo_form input:focus {
   border: 1px solid red;
 }
-.add_task {
+.add_task_btn {
   margin-left: auto;
   color: white;
   padding: 0.875rem 1.25rem;

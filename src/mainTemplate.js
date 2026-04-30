@@ -54,10 +54,10 @@ function createMainHeaderTemplate() {
               You have <span class="h1_nr_span">3 tasks</span> today.
             </p>
           </header>
-            <button type="submit" class='add_task'>Add Task</button>
+            <button type="submit" class='add_task_btn'>Add Task</button>
 
             <!-- new modal form -->
-          <dialog id="todoDialog">
+      <dialog id="todoDialog">
       <form method="dialog" class="todo_dialog_form">
         <h2>Descrive your task</h2>
         <main>
@@ -93,7 +93,7 @@ function createMainHeaderTemplate() {
           </div>
         </main>
         <button value="save" id='save'>Save</button>
-        <button value="cancel">Close</button>
+        <button value="cancel" formnovalidate>Cancel</button>
       </form>
     </dialog>
           <nav class="todo_filter">
