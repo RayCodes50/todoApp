@@ -64,7 +64,7 @@ function createTodo(item, onDelete) {
   const prioritySelect = card.querySelector(".todo_priority");
   prioritySelect.value = item.priority;
   const btnDelete = card.querySelector(".btn_delete");
-  btnDelete.addEventListener("click", (e) => {
+  btnDelete.addEventListener("click", () => {
     console.log(`onDelete initiated ${item.id}`);
     onDelete(item.id);
   });

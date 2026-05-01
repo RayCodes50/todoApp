@@ -59,7 +59,7 @@ function createMainHeaderTemplate() {
             <!-- new modal form -->
       <dialog id="todoDialog">
       <form method="dialog" class="todo_dialog_form">
-        <h2>Descrive your task</h2>
+        <h2>Describe your task</h2>
         <main>
           <div class="field_wrap">
             <label for="title">Name the task:</label>
@@ -93,7 +93,7 @@ function createMainHeaderTemplate() {
           </div>
         </main>
         <button value="save" id='save'>Save</button>
-        <button value="cancel" formnovalidate>Cancel</button>
+        <button value="cancel" formnovalidate >Cancel</button>
       </form>
     </dialog>
           <nav class="todo_filter">

@@ -13,11 +13,11 @@ body {
 }
 
 /* Optional: experimental size interpolation */
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
   }
-}
+} */
 
 /* Navigation resets */
 nav ul {

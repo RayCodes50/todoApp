@@ -15,7 +15,6 @@ const initial = todoControl.createTodo("Pet Lady", 5, "14/09/1991", {
   tags: "4 legs",
 });
 todoControl.addTodo(initial);
-const x = 5;
 
 todoControl.loadTodo();
 renderTodos();
@@ -36,7 +35,7 @@ btnsFilter.addEventListener("click", (e) => {
 // prevents page from submitting and opens dialog
 const todoForm = document.querySelector(".add_task_btn");
 const todoDialog = document.querySelector("#todoDialog");
-todoForm.addEventListener("click", (e) => {
+todoForm.addEventListener("click", () => {
   todoDialog.showModal();
 });
 // creates todo and saves to memory
@@ -77,8 +76,6 @@ function handleDelete(id) {
   todoControl.deleteTodo(id);
   renderTodos();
 }
-
-function deleteTodo() {}
 
 //delete btn functionality
 

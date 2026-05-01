@@ -1,12 +1,15 @@
 {
   "name": "todoapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "my first todo App",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve",
     "build": "webpack",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "repository": {
