@@ -15,6 +15,7 @@ const initial = todoControl.createTodo("Pet Lady", 5, "14/09/1991", {
   tags: "4 legs",
 });
 todoControl.addTodo(initial);
+const x = 5;
 
 todoControl.loadTodo();
 renderTodos();
